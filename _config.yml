@@ -193,3 +193,5 @@ plugins:
   - jekyll-paginate-v2
   - jekyll-last-modified-at
   - jekyll-minifier
+  - jekyll-redirect-from
+  - jemoji
