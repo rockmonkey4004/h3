@@ -1,6 +1,7 @@
-.sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+.sass-cache/
+images/
+node_modules/
 vendor/
 vendor/bundle/ruby/2.6.0/
-images/
