@@ -13,42 +13,59 @@ No plugins required.
 import glob
 import os
 
-post_dir = '_posts/'
-tag_dir = 'tag/'
+def main():
+    post_dir = '_posts/'
+    tag_dir = 'tag/'
 
-filenames = glob.glob(post_dir + '*md')
+    # Glob files with .md extension in post_dir
+    filenames = glob.glob(os.path.join(post_dir, '*.md'))
 
-total_tags = []
-for filename in filenames:
-    f = open(filename, 'r', encoding='utf8')
-    crawl = False
-    for line in f:
-        if crawl:
-            current_tags = line.strip().split()
-            if current_tags[0] == 'tags:':
-                total_tags.extend(current_tags[1:])
-                crawl = False
-                break
-        if line.strip() == '---':
-            if not crawl:
-                crawl = True
-            else:
-                crawl = False
-                break
-    f.close()
-total_tags = set(total_tags)
+    total_tags = []
+    for filename in filenames:
+        with open(filename, 'r', encoding='utf8') as f:
+            crawl = False
+            for line in f:
+                stripped_line = line.strip()
+                if crawl:
+                    current_tags = stripped_line.split()
+                    if current_tags and current_tags[0] == 'tags:':
+                        total_tags.extend(current_tags[1:])
+                        crawl = False
+                        break
+                if stripped_line == '---':
+                    if not crawl:
+                        crawl = True
+                    else:
+                        crawl = False
+                        break
 
-old_tags = glob.glob(tag_dir + '*.md')
-for tag in old_tags:
-    os.remove(tag)
+    # Use a set to remove duplicates
+    unique_tags = set(total_tags)
 
-if not os.path.exists(tag_dir):
-    os.makedirs(tag_dir)
+    # Remove old tag files
+    old_tags = glob.glob(os.path.join(tag_dir, '*.md'))
+    for tag_file in old_tags:
+        os.remove(tag_file)
 
-for tag in total_tags:
-    tag_filename = tag_dir + tag + '.md'
-    f = open(tag_filename, 'a')
-    write_str = '---\nlayout: tagpage\ntitle: \"' + tag + '\"\ntag: ' + tag + '\nrobots: noindex\n---\n'
-    f.write(write_str)
-    f.close()
-print("Tags generated, count", total_tags.__len__())
+    # Ensure tag directory exists
+    if not os.path.exists(tag_dir):
+        os.makedirs(tag_dir)
+
+    # Create new tag files
+    for tag in unique_tags:
+        tag_filename = os.path.join(tag_dir, f'{tag}.md')
+        with open(tag_filename, 'w', encoding='utf8') as f:
+            write_str = (
+                f"---\n"
+                f"layout: tagpage\n"
+                f"title: \"{tag}\"\n"
+                f"tag: {tag}\n"
+                f"robots: noindex\n"
+                f"---\n"
+            )
+            f.write(write_str)
+
+    print(f"Tags generated, count {len(unique_tags)}")
+
+if __name__ == "__main__":
+    main()
