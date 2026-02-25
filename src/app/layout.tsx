@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "Wholesome recipes and wellness tips for your journey of health and hope.",
     siteName: "H3 with Laura",
     images: [{
-      url: "https://res.cloudinary.com/rockmonkey/image/upload/v1587132373/cinnamon-rolls_zy2vhh.jpg",
+      url: "https://res.cloudinary.com/rockmonkey/image/upload/f_auto,q_auto/v1587132373/cinnamon-rolls_zy2vhh.jpg",
       width: 1200,
       height: 630,
       alt: "H3 with Laura - Cinnamon Rolls"
@@ -39,9 +39,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Health, Healing, and Hope (H3)",
-    description: "Wholesome recipes and wellness tips for your journey of health and hope.",
-    images: ["https://res.cloudinary.com/rockmonkey/image/upload/v1587132373/cinnamon-rolls_zy2vhh.jpg"],
+    title: {
+      default: "Health, Healing, and Hope (H3) | Laura Sanders",
+      template: "%s | H3 with Laura"
+    },
+    description: "A journey of health, healing, and hope with wholesome recipes, wellness tips, and personal stories.",
+    images: ["https://res.cloudinary.com/rockmonkey/image/upload/f_auto,q_auto/v1587132373/cinnamon-rolls_zy2vhh.jpg"],
   },
   robots: {
     index: true,

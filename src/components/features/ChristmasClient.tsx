@@ -24,7 +24,7 @@ export default function ChristmasClient() {
 
                 <div className="aspect-[16/9] w-full overflow-hidden rounded-[2.5rem] bg-muted shadow-2xl shadow-foreground/5 border-8 border-white relative">
                     <Image
-                        src="https://res.cloudinary.com/rockmonkey/image/upload/v1605233554/Christmas_treat_Ebook_tnwuce.jpg"
+                        src="https://res.cloudinary.com/rockmonkey/image/upload/f_auto,q_auto/v1605233554/Christmas_treat_Ebook_tnwuce.jpg"
                         alt="Merry Christmas letters on fruit"
                         fill
                         className="object-cover"

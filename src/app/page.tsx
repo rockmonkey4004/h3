@@ -48,7 +48,7 @@ export default function Home() {
             <Link href="/tags/recipes" className="group space-y-6 text-center transition-transform hover:scale-[1.02] active:scale-[0.98]">
               <div className="aspect-square w-full overflow-hidden rounded-[2rem] border-4 border-white shadow-xl shadow-foreground/5 bg-white transition-shadow group-hover:shadow-2xl relative">
                 <Image
-                  src="https://res.cloudinary.com/rockmonkey/image/upload/v1587782937/Blog/Burger-Up-Salad_w1gncd.jpg"
+                  src="https://res.cloudinary.com/rockmonkey/image/upload/f_auto,q_auto/v1587782937/Blog/Burger-Up-Salad_w1gncd.jpg"
                   alt="Vibrant house salad representing health and nourishment"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

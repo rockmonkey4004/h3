@@ -7,15 +7,15 @@ import { ArrowRight } from 'lucide-react';
 
 const images = [
     {
-        url: "https://res.cloudinary.com/rockmonkey/image/upload/v1587132373/cinnamon-rolls_zy2vhh.jpg",
+        url: "https://res.cloudinary.com/rockmonkey/image/upload/f_auto,q_auto/v1587132373/cinnamon-rolls_zy2vhh.jpg",
         alt: "Warm Cinnamon Rolls"
     },
     {
-        url: "https://res.cloudinary.com/rockmonkey/image/upload/v1608324541/Blog/healthy_creamy_sausage_pasta_vhejht.jpg",
+        url: "https://res.cloudinary.com/rockmonkey/image/upload/f_auto,q_auto/v1608324541/Blog/healthy_creamy_sausage_pasta_vhejht.jpg",
         alt: "Creamy Sausage Pasta"
     },
     {
-        url: "https://res.cloudinary.com/rockmonkey/image/upload/v1607979123/Blog/Snickerdoodle_sjfi8k.jpg",
+        url: "https://res.cloudinary.com/rockmonkey/image/upload/f_auto,q_auto/v1607979123/Blog/Snickerdoodle_sjfi8k.jpg",
         alt: "Paleo Snickerdoodles"
     }
 ];
