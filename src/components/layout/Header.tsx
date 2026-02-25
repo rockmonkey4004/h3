@@ -27,43 +27,45 @@ export default function Header() {
     ];
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/60 backdrop-blur-xl transition-all">
-            <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8">
-                <Link
-                    href="/"
-                    className="flex items-center gap-2 group transition-opacity hover:opacity-80"
-                    onClick={() => setIsMenuOpen(false)}
-                >
-                    <span className="text-2xl font-bold tracking-tight text-foreground font-serif">H3 <span className="text-foreground/40 font-light italic">with Laura</span></span>
-                </Link>
+        <>
+            <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/60 backdrop-blur-xl transition-all">
+                <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8">
+                    <Link
+                        href="/"
+                        className="flex items-center gap-2 group transition-opacity hover:opacity-80"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        <span className="text-2xl font-bold tracking-tight text-foreground font-serif">H3 <span className="text-foreground/40 font-light italic">with Laura</span></span>
+                    </Link>
 
-                <div className="flex items-center gap-8 md:gap-12">
-                    <nav className="hidden md:flex gap-10">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80"
+                    <div className="flex items-center gap-8 md:gap-12">
+                        <nav className="hidden md:flex gap-10">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
+
+                        <div className="flex items-center gap-5">
+                            <Search />
+                            <button
+                                onClick={() => setIsMenuOpen(true)}
+                                className="p-2.5 md:hidden hover:bg-muted/50 rounded-full transition-colors active:scale-90"
+                                aria-label="Open navigation menu"
                             >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </nav>
-
-                    <div className="flex items-center gap-5">
-                        <Search />
-                        <button
-                            onClick={() => setIsMenuOpen(true)}
-                            className="p-2.5 md:hidden hover:bg-muted/50 rounded-full transition-colors active:scale-90"
-                            aria-label="Open navigation menu"
-                        >
-                            <Menu className="w-5 h-5 text-foreground/60" />
-                        </button>
+                                <Menu className="w-5 h-5 text-foreground/60" />
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </header>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Overlay - Outside header to fix stacking context */}
             <div
                 className={`fixed inset-0 z-[9999] bg-[#FDFCFB] !opacity-100 transition-all duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                     }`}
@@ -109,6 +111,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-        </header>
+        </>
     );
 }
