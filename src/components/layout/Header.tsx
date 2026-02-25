@@ -67,7 +67,7 @@ export default function Header() {
 
             {/* Mobile Menu Overlay - Outside header to fix stacking context */}
             <div
-                className={`fixed inset-0 z-[9999] bg-[#FDFCFB] !opacity-100 transition-all duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                className={`fixed inset-0 z-[9999] bg-[#FDFCFB] transition-all duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                     }`}
             >
                 <div className="flex flex-col h-full items-center justify-start p-8 pt-20 space-y-12">
@@ -81,21 +81,19 @@ export default function Header() {
 
                     <Link
                         href="/"
-                        className="text-2xl font-bold font-serif tracking-tight"
+                        className="text-2xl font-bold font-serif tracking-tight text-foreground"
                         onClick={() => setIsMenuOpen(false)}
                     >
                         H3 <span className="text-foreground/30 font-light italic">with Laura</span>
                     </Link>
 
-                    <nav className="flex flex-col items-center gap-8">
-                        {navLinks.map((link, index) => (
+                    <nav className="flex flex-col items-center gap-10">
+                        {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className={`text-2xl font-bold font-serif transition-all duration-500 hover:text-accent-blue-dark ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                                    }`}
-                                style={{ transitionDelay: `${index * 50}ms` }}
+                                className="text-2xl font-bold font-serif text-foreground hover:text-accent-blue-dark transition-colors"
                             >
                                 {link.label}
                             </Link>
@@ -105,8 +103,8 @@ export default function Header() {
                     <div className="pt-12 flex flex-col items-center gap-6 text-center">
                         <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-foreground/30 border-t border-border pt-8 w-32 mx-auto">Connect & Support</p>
                         <div className="flex gap-8">
-                            <a href="http://buymeacoffee.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-warm transition-colors">Coffee</a>
-                            <a href="https://www.instagram.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-blue transition-colors">Instagram</a>
+                            <a href="http://buymeacoffee.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-warm transition-colors text-foreground">Coffee</a>
+                            <a href="https://www.instagram.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-blue transition-colors text-foreground">Instagram</a>
                         </div>
                     </div>
                 </div>
