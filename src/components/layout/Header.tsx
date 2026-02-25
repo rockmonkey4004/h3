@@ -1,30 +1,110 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Search from './Search';
 
 export default function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Prevent scrolling when menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [isMenuOpen]);
+
+    const navLinks = [
+        { href: '/blog', label: 'Blog' },
+        { href: '/christmas', label: 'Christmas Gift' },
+        { href: '/recommended-items', label: 'Pantry' },
+        { href: '/about', label: 'About' },
+        { href: '/contact', label: 'Contact' },
+    ];
+
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/60 backdrop-blur-xl transition-all">
             <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8">
-                <Link href="/" className="flex items-center gap-2 group transition-opacity hover:opacity-80">
+                <Link
+                    href="/"
+                    className="flex items-center gap-2 group transition-opacity hover:opacity-80"
+                    onClick={() => setIsMenuOpen(false)}
+                >
                     <span className="text-2xl font-bold tracking-tight text-foreground font-serif">H3 <span className="text-foreground/40 font-light italic">with Laura</span></span>
                 </Link>
+
                 <div className="flex items-center gap-8 md:gap-12">
                     <nav className="hidden md:flex gap-10">
-                        <Link href="/blog" className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80">Blog</Link>
-                        <Link href="/christmas" className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80">Christmas Gift</Link>
-                        <Link href="/recommended-items" className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80">Pantry</Link>
-                        <Link href="/about" className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80">About</Link>
-                        <Link href="/contact" className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80">Contact</Link>
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="text-sm font-medium tracking-wide transition-colors hover:text-accent-blue/80"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                     </nav>
+
                     <div className="flex items-center gap-5">
                         <Search />
                         <button
-                            className="p-2.5 md:hidden hover:bg-muted/50 rounded-full transition-colors"
+                            onClick={() => setIsMenuOpen(true)}
+                            className="p-2.5 md:hidden hover:bg-muted/50 rounded-full transition-colors active:scale-90"
                             aria-label="Open navigation menu"
                         >
                             <Menu className="w-5 h-5 text-foreground/60" />
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            <div
+                className={`fixed inset-0 z-[100] bg-background/95 backdrop-blur-2xl transition-all duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                    }`}
+            >
+                <div className="flex flex-col h-full items-center justify-center p-8 space-y-12">
+                    <button
+                        onClick={() => setIsMenuOpen(false)}
+                        className="absolute top-8 right-8 p-3 hover:bg-muted rounded-full transition-colors"
+                    >
+                        <X className="w-8 h-8 text-foreground/40" />
+                    </button>
+
+                    <Link
+                        href="/"
+                        className="text-4xl font-bold font-serif mb-8"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        H3
+                    </Link>
+
+                    <nav className="flex flex-col items-center gap-8">
+                        {navLinks.map((link, index) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className={`text-2xl font-bold font-serif transition-all duration-500 hover:text-accent-blue ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: `${index * 50}ms` }}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    <div className="pt-12 flex flex-col items-center gap-4 text-center">
+                        <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/30">Connect & Support</p>
+                        <div className="flex gap-6">
+                            <a href="http://buymeacoffee.com/h3withlaura" className="text-sm font-bold tracking-widest uppercase hover:text-accent-warm transition-colors">Coffee</a>
+                            <a href="https://www.instagram.com/h3withlaura" className="text-sm font-bold tracking-widest uppercase hover:text-accent-blue transition-colors">Instagram</a>
+                        </div>
                     </div>
                 </div>
             </div>
