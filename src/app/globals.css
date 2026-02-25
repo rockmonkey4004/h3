@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+:root {
+  /* Scandinavian Palette - Warm, Neutral & Nordic */
+  --background: #FDFCFB;
+  /* Soft Cream */
+  --foreground: #2D2A26;
+  /* Warm Charcoal */
+  --card: #FFFFFF;
+  --card-foreground: #2D2A26;
+  --popover: #FFFFFF;
+  --popover-foreground: #2D2A26;
+  --primary: #2D2A26;
+  --primary-foreground: #FDFCFB;
+  --secondary: #F5F1EE;
+  /* Nordic Sand */
+  --secondary-foreground: #2D2A26;
+  --muted: #F9F7F5;
+  /* Nordic Mist */
+  --muted-foreground: #7D746D;
+  /* Muted Taupe */
+  --accent: #E9E4DE;
+  /* Warm Stone */
+  --accent-foreground: #2D2A26;
+  --destructive: #D16D6D;
+  /* Muted Red */
+  --destructive-foreground: #FDFCFB;
+  --border: #E8E2DD;
+  /* Nordic Linen */
+  --input: #E8E2DD;
+  --ring: #A7B6BA;
+  --radius: 1.5rem;
+
+  /* Nordic Accent Series */
+  --accent-blue: #9BA8AE;
+  /* Nordic Sky */
+  --accent-blue-dark: #5D6D74;
+  /* Accessible for text */
+  --accent-sage: #B4BCA0;
+  /* Nordic Forest */
+  --accent-sage-dark: #6B7552;
+  /* Accessible for text */
+  --accent-warm: #D9CEC1;
+  /* Nordic Clay */
+  --accent-sand: #E9E4DE;
+  /* Nordic Sand */
+
+  --font-inter: "Inter", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-dark: var(--accent-blue-dark);
+  --color-accent-sage: var(--accent-sage);
+  --color-accent-sage-dark: var(--accent-sage-dark);
+  --color-accent-warm: var(--accent-warm);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-serif: var(--font-playfair), ui-serif, Georgia;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+
+  /* High visibility focus states */
+  :focus-visible {
+    outline: 2px solid var(--accent-blue-dark);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+  }
+
+  /* Enhancing typography for recipes and blog text */
+  .prose {
+    --tw-prose-body: var(--foreground);
+    --tw-prose-headings: var(--foreground);
+    --tw-prose-links: var(--accent-blue);
+    --tw-prose-bold: var(--foreground);
+    --tw-prose-quotes: var(--accent-blue);
+    --tw-prose-hr: var(--border);
+    max-width: 70ch !important;
+    line-height: 1.85 !important;
+    letter-spacing: -0.01em;
+  }
+
+  .prose p {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Recipe-specific formatting */
+  .prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .prose li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+  }
+
+  .prose blockquote {
+    border-left-width: 4px;
+    border-color: var(--accent-blue);
+    background-color: var(--muted);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    font-style: italic;
+    font-weight: 400;
+  }
+}
