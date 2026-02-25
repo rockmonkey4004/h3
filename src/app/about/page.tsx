@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Heart, Sun, Leaf, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -22,11 +23,14 @@ export default function AboutPage() {
                 </div>
 
                 {/* Image Section */}
-                <div className="aspect-[16/9] w-full overflow-hidden rounded-[2.5rem] bg-muted shadow-2xl shadow-foreground/5 border-8 border-white">
-                    <img
+                <div className="aspect-[16/9] w-full overflow-hidden rounded-[2.5rem] bg-muted shadow-2xl shadow-foreground/5 border-8 border-white relative">
+                    <Image
                         src="https://res.cloudinary.com/rockmonkey/image/upload/dpr_auto,f_auto,fl_any_format.fast_scale.force_strip.immutable_cache.progressive.progressive:semi.progressive:steep,q_auto/v1587782942/spring-flower_rj4zsg.jpg"
                         alt="Laura holding fresh picked strawberries"
-                        className="w-full h-full object-cover"
+                        fill
+                        priority
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 896px"
                     />
                 </div>
 

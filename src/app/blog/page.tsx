@@ -2,6 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllPosts } from '@/lib/posts';
 import { Calendar, Tag as TagIcon } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Blog",
+    description: "Thoughts on health, healing, and hope. Discover wholesome recipes, personal stories, and practical wellness tips.",
+};
+
 
 export default function BlogPage() {
     const posts = getAllPosts();

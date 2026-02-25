@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home - Health, Healing, and Hope",
+  description: "A journey of health, healing, and hope. Sharing wholesome recipes, thoughtful tips, and a supportive community.",
+};
 
 export default function Home() {
   return (
@@ -8,10 +14,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="https://res.cloudinary.com/rockmonkey/image/upload/c_scale,f_auto,fl_any_format,q_auto,w_1920/v1587132373/cinnamon-rolls_zy2vhh.jpg"
-            alt="Cinnamon Rolls"
-            className="w-full h-full object-cover brightness-[0.85]"
+            alt="Cinnamon Rolls Hero Background"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover brightness-[0.85]"
           />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center space-y-8">

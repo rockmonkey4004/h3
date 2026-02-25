@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts } from '@/lib/posts';
 import { Calendar, Tag as TagIcon, ArrowLeft } from 'lucide-react';
 
@@ -52,11 +53,13 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {posts.map((post) => (
                         <Link key={post.slug} href={`/blog/${post.slug}`} className="group space-y-4 block">
-                            <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-muted shadow-sm">
-                                <img
+                            <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-muted shadow-sm relative">
+                                <Image
                                     src={post.image || 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&auto=format&fit=crop&q=60'}
                                     alt={post.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                             </div>
                             <div className="space-y-2">
