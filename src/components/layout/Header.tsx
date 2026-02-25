@@ -65,10 +65,10 @@ export default function Header() {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 z-[100] bg-background backdrop-blur-3xl transition-all duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                className={`fixed inset-0 z-[9999] bg-[#FDFCFB] !opacity-100 transition-all duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                     }`}
             >
-                <div className="flex flex-col h-full items-center justify-start p-8 pt-32 space-y-16">
+                <div className="flex flex-col h-full items-center justify-start p-8 pt-20 space-y-12">
                     <button
                         onClick={() => setIsMenuOpen(false)}
                         className="absolute top-8 right-8 p-3 hover:bg-muted rounded-full transition-all active:scale-95"
@@ -79,19 +79,19 @@ export default function Header() {
 
                     <Link
                         href="/"
-                        className="text-3xl font-bold font-serif tracking-tight"
+                        className="text-2xl font-bold font-serif tracking-tight"
                         onClick={() => setIsMenuOpen(false)}
                     >
                         H3 <span className="text-foreground/30 font-light italic">with Laura</span>
                     </Link>
 
-                    <nav className="flex flex-col items-center gap-10">
+                    <nav className="flex flex-col items-center gap-8">
                         {navLinks.map((link, index) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className={`text-3xl font-bold font-serif transition-all duration-500 hover:text-accent-blue-dark ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                                className={`text-2xl font-bold font-serif transition-all duration-500 hover:text-accent-blue-dark ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                                     }`}
                                 style={{ transitionDelay: `${index * 50}ms` }}
                             >
@@ -100,7 +100,7 @@ export default function Header() {
                         ))}
                     </nav>
 
-                    <div className="pt-16 flex flex-col items-center gap-6 text-center">
+                    <div className="pt-12 flex flex-col items-center gap-6 text-center">
                         <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-foreground/30 border-t border-border pt-8 w-32 mx-auto">Connect & Support</p>
                         <div className="flex gap-8">
                             <a href="http://buymeacoffee.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-warm transition-colors">Coffee</a>
