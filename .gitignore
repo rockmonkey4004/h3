@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/legacy/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -16,12 +17,14 @@
 # next.js
 /.next/
 /out/
+/legacy/_site/
 
 # production
 /build
 
 # misc
 .DS_Store
+**/.DS_Store
 *.pem
 
 # debug

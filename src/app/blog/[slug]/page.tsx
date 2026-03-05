@@ -109,7 +109,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     </ReactMarkdown>
                 </div>
 
-                <Comments slug={slug} title={post.title} />
+                <Comments title={post.title} />
             </div>
         </article>
     );

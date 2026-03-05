@@ -5,44 +5,94 @@ import { useRouter } from 'next/navigation';
 import { Search as SearchIcon, X, Loader2 } from 'lucide-react';
 import FlexSearch from 'flexsearch';
 
+type SearchDocument = {
+    slug: string;
+    title: string;
+    description: string;
+    tags: string[];
+};
+
+type SearchResultGroup = {
+    result: string[];
+};
+
+type SearchIndex = {
+    add: (doc: SearchDocument) => void;
+    search: (query: string, options: { limit: number; enrich: true }) => SearchResultGroup[];
+};
+
 export default function Search() {
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState<any[]>([]);
+    const [results, setResults] = useState<SearchDocument[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const indexRef = useRef<any>(null);
-    const dataRef = useRef<any[]>([]);
+    const indexRef = useRef<SearchIndex | null>(null);
+    const dataRef = useRef<SearchDocument[]>([]);
     const router = useRouter();
 
     useEffect(() => {
-        if (isOpen && !indexRef.current) {
-            setIsLoading(true);
-            fetch('/api/search')
-                .then(res => res.json())
-                .then(data => {
-                    const index = new FlexSearch.Document({
-                        document: {
-                            id: 'slug',
-                            index: ['title', 'description', 'tags']
-                        },
-                        tokenize: 'forward'
-                    });
+        if (!isOpen || indexRef.current) {
+            return;
+        }
 
-                    data.forEach((doc: any) => index.add(doc));
+        let isActive = true;
+        const controller = new AbortController();
+
+        async function loadSearchIndex() {
+            setIsLoading(true);
+
+            try {
+                const response = await fetch('/api/search', { signal: controller.signal });
+                if (!response.ok) {
+                    throw new Error(`Search API responded with ${response.status}`);
+                }
+
+                const data: SearchDocument[] = await response.json();
+                const index = new FlexSearch.Document({
+                    document: {
+                        id: 'slug',
+                        index: ['title', 'description', 'tags'],
+                    },
+                    tokenize: 'forward',
+                }) as unknown as SearchIndex;
+
+                data.forEach((doc) => index.add(doc));
+
+                if (isActive) {
                     indexRef.current = index;
                     dataRef.current = data;
+                }
+            } catch (error) {
+                if (!(error instanceof DOMException && error.name === 'AbortError')) {
+                    console.error('Failed to initialize search index', error);
+                }
+            } finally {
+                if (isActive) {
                     setIsLoading(false);
-                });
+                }
+            }
         }
+
+        void loadSearchIndex();
+
+        return () => {
+            isActive = false;
+            controller.abort();
+        };
     }, [isOpen]);
 
     useEffect(() => {
-        if (indexRef.current && query.length > 0) {
-            const searchResults = indexRef.current.search(query, { limit: 5, enrich: true });
-            const flatResults = searchResults.flatMap((r: any) => r.result);
-            // Deduplicate results by slug
-            const uniqueResults = dataRef.current.filter(doc => flatResults.includes(doc.slug));
-            setResults(uniqueResults);
+        const trimmedQuery = query.trim();
+
+        if (indexRef.current && trimmedQuery.length > 0) {
+            const searchResults = indexRef.current.search(trimmedQuery, { limit: 5, enrich: true });
+            const matchedSlugs = Array.from(new Set(searchResults.flatMap((result) => result.result)));
+
+            const orderedResults = matchedSlugs
+                .map((slug) => dataRef.current.find((doc) => doc.slug === slug))
+                .filter((doc): doc is SearchDocument => Boolean(doc));
+
+            setResults(orderedResults);
         } else {
             setResults([]);
         }
@@ -84,6 +134,7 @@ export default function Search() {
                     <button
                         onClick={() => { setIsOpen(false); setQuery(''); }}
                         className="p-2.5 hover:bg-muted rounded-full transition-colors group"
+                        aria-label="Close search"
                     >
                         <X className="w-6 h-6 text-foreground/20 group-hover:text-foreground/40 transition-colors" />
                     </button>
