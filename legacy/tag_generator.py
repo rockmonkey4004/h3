@@ -1,4 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# ///
 
 '''
 tag_generator.py
@@ -10,45 +13,43 @@ This script creates tags for your Jekyll blog hosted by Github page.
 No plugins required.
 '''
 
-import glob
-import os
+from pathlib import Path
 
-post_dir = '_posts/'
-tag_dir = 'tag/'
+post_dir = Path("_posts")
+tag_dir = Path("tag")
 
-filenames = glob.glob(post_dir + '*md')
+filenames = post_dir.glob("*md")
 
 total_tags = []
 for filename in filenames:
-    f = open(filename, 'r', encoding='utf8')
-    crawl = False
-    for line in f:
-        if crawl:
-            current_tags = line.strip().split()
-            if current_tags[0] == 'tags:':
-                total_tags.extend(current_tags[1:])
-                crawl = False
-                break
-        if line.strip() == '---':
-            if not crawl:
-                crawl = True
-            else:
-                crawl = False
-                break
-    f.close()
+    with filename.open("r", encoding="utf8") as f:
+        crawl = False
+        for line in f:
+            if crawl:
+                current_tags = line.strip().split()
+                if current_tags and current_tags[0] == "tags:":
+                    total_tags.extend(current_tags[1:])
+                    crawl = False
+                    break
+            if line.strip() == "---":
+                if not crawl:
+                    crawl = True
+                else:
+                    crawl = False
+                    break
 total_tags = set(total_tags)
 
-old_tags = glob.glob(tag_dir + '*.md')
+old_tags = tag_dir.glob("*.md")
 for tag in old_tags:
-    os.remove(tag)
+    tag.unlink()
 
-if not os.path.exists(tag_dir):
-    os.makedirs(tag_dir)
+tag_dir.mkdir(parents=True, exist_ok=True)
 
 for tag in total_tags:
-    tag_filename = tag_dir + tag + '.md'
-    f = open(tag_filename, 'a')
-    write_str = '---\nlayout: tagpage\ntitle: \"' + tag + '\"\ntag: ' + tag + '\nrobots: noindex\n---\n'
-    f.write(write_str)
-    f.close()
-print("Tags generated, count", total_tags.__len__())
+    tag_filename = tag_dir / f"{tag}.md"
+    write_str = (
+        f'---\nlayout: tagpage\ntitle: "{tag}"\ntag: {tag}\nrobots: noindex\n---\n'
+    )
+    tag_filename.write_text(write_str, encoding="utf8")
+
+print("Tags generated, count", len(total_tags))
