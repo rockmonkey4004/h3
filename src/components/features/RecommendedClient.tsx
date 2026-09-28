@@ -63,7 +63,7 @@ export default function RecommendedClient() {
                         Recommended <span className="text-accent-blue italic">Items</span>
                     </h1>
                     <p className="text-xl text-foreground/60 font-light leading-relaxed">
-                        Not all products are created equal. I've curated this collection of my favorites to help you on your H3 journey.
+                        Not all products are created equal. I’ve curated this collection of my favorites to help you on your H3 journey.
                     </p>
                 </div>
 

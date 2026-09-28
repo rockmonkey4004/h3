@@ -84,7 +84,7 @@ export default function Home() {
               <div className="space-y-3">
                 <h3 className="text-2xl font-bold font-serif group-hover:text-accent-blue transition-colors">Healing</h3>
                 <p className="text-base text-foreground/60 leading-relaxed font-light px-4">
-                  A gentle approach to recovery, listening to your body's unique needs.
+                  A gentle approach to recovery, listening to your body’s unique needs.
                 </p>
               </div>
             </Link>

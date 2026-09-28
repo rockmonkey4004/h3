@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, Sun, Leaf, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -62,7 +61,7 @@ export default function AboutPage() {
                     </p>
 
                     <blockquote className="border-l-4 border-accent-blue pl-6 italic text-foreground/70 bg-muted/50 py-6 pr-6 rounded-r-2xl">
-                        "Learning to seek hope in the darkness brought me strength to keep fighting."
+                        “Learning to seek hope in the darkness brought me strength to keep fighting.”
                     </blockquote>
 
                     <p>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllPosts } from '@/lib/posts';
-import { Calendar, Tag as TagIcon, ArrowLeft } from 'lucide-react';
+import { Calendar, ArrowLeft } from 'lucide-react';
 
 import type { Metadata } from 'next';
 
@@ -43,7 +43,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
             <div className="space-y-12">
                 <div className="space-y-4">
                     <h1 className="text-4xl md:text-6xl font-bold font-serif">
-                        Posts tagged with <span className="text-accent-blue capitalize italic">"{tag.replace(/-/g, ' ')}"</span>
+                        Posts tagged with <span className="text-accent-blue capitalize italic">“{tag.replace(/-/g, ' ')}”</span>
                     </h1>
                     <p className="text-lg text-foreground/60 font-light">
                         Found {posts.length} {posts.length === 1 ? 'post' : 'posts'}

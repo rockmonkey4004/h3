@@ -39,7 +39,7 @@ export default function ChristmasClient() {
                     </p>
 
                     <blockquote className="border-l-4 border-accent-sage pl-6 italic text-foreground/70 bg-muted/50 py-8 pr-8 rounded-r-3xl">
-                        "My heart behind my Christmas Treat E-Book is to provide recipes that not only taste good but help us continue to feel good."
+                        “My heart behind my Christmas Treat E-Book is to provide recipes that not only taste good but help us continue to feel good.”
                     </blockquote>
 
                     <p>

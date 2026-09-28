@@ -1,4 +1,4 @@
-import { Send, Mail, MapPin, MessageSquare, Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { Send, Mail, MapPin, MessageSquare } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function ContactPage() {
                             Get in <span className="text-accent-blue italic">Touch</span>
                         </h1>
                         <p className="text-lg text-foreground/60 font-light leading-relaxed">
-                            Have questions about a recipe? Want to share your own H3 journey? I'd love to hear from you.
+                            Have questions about a recipe? Want to share your own H3 journey? I’d love to hear from you.
                         </p>
                     </div>
 
