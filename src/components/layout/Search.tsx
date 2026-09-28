@@ -169,13 +169,13 @@ export default function Search() {
                             <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
                                 <SearchIcon className="w-8 h-8 text-foreground/10" />
                             </div>
-                            <p className="text-lg font-serif">Nothing found for "{query}"</p>
+                            <p className="text-lg font-serif">Nothing found for “{query}”</p>
                             <p className="text-sm text-foreground/30 font-light">Try another keyword or browse the blog</p>
                         </div>
                     ) : (
                         <div className="py-20 text-center space-y-4">
                             <p className="text-sm italic font-serif text-foreground/40 max-w-xs mx-auto leading-relaxed">
-                                "The journey of 1,000 miles begins with a single recipe."
+                                “The journey of 1,000 miles begins with a single recipe.”
                             </p>
                             <div className="flex items-center justify-center gap-2 pt-4">
                                 <span className="w-2 h-2 rounded-full bg-accent-blue/20"></span>

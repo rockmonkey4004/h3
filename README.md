@@ -58,7 +58,15 @@ npm run typecheck  # TypeScript checks
 
 `legacy/` contains historical Jekyll-era artifacts and migration references. It is excluded from modern linting/build flows.
 
-## Deployment
+## Verification and Deployment
+
+GitHub Actions is disabled. Run the former CI gate locally:
+
+```bash
+scripts/verify-local.sh
+```
+
+The local gate uses Node 20+, installs the frozen npm dependency set, and runs lint, TypeScript checking, and a production build.
 
 Netlify config is in `netlify.toml` and builds with:
 

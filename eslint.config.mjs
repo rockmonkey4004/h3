@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "legacy/**",
+    "scripts/migrate-posts.js",
     "node_modules/**",
   ]),
 ]);
