@@ -1,6 +1,5 @@
 import { Mail, MapPin, MessageSquare } from 'lucide-react';
 import type { Metadata } from 'next';
-import ContactForm from '@/components/features/ContactForm';
 
 export const metadata: Metadata = {
     title: "Contact",
@@ -60,7 +59,24 @@ export default function ContactPage() {
                 <div className="bg-white rounded-[2.5rem] border border-border/50 p-10 shadow-2xl shadow-foreground/5 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-accent-blue/5 rounded-bl-full animate-pulse" />
 
-                    <ContactForm />
+                    <div className="relative z-10 flex min-h-[28rem] flex-col items-center justify-center text-center space-y-6">
+                        <div className="w-16 h-16 rounded-2xl bg-accent-blue/10 flex items-center justify-center">
+                            <Mail className="w-8 h-8 text-accent-blue" />
+                        </div>
+                        <div className="space-y-3">
+                            <h2 className="text-3xl font-bold font-serif">Send me an email</h2>
+                            <p className="text-foreground/60 font-light leading-relaxed max-w-sm">
+                                Email is the most reliable way to reach me for recipe questions, collaborations, or a quick hello.
+                            </p>
+                        </div>
+                        <a
+                            href="mailto:laura@h3withlaura.com?subject=H3%20Website%20Message"
+                            className="inline-flex items-center gap-3 bg-foreground text-background font-bold tracking-[0.15em] uppercase px-8 py-4 rounded-2xl hover:opacity-90 transition-opacity"
+                        >
+                            <Mail className="w-5 h-5" />
+                            Email Laura
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
