@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Home - Health, Healing, and Hope",
   description: "A journey of health, healing, and hope. Sharing wholesome recipes, thoughtful tips, and a supportive community.",
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {

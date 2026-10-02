@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "My Story",
     description: "Learn about Laura's journey of health, healing, and hope, and the heart behind H3.",
+    alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

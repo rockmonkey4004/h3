@@ -15,6 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.h3withlaura.com"),
   title: {
     default: "Health, Healing, and Hope (H3) | Laura Sanders",
     template: "%s | H3 with Laura"
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://h3withlaura.com",
+    url: "https://www.h3withlaura.com",
     title: "Health, Healing, and Hope (H3)",
     description: "Wholesome recipes and wellness tips for your journey of health and hope.",
     siteName: "H3 with Laura",

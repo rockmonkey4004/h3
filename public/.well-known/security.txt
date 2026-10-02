@@ -1,0 +1,4 @@
+Contact: mailto:laura@h3withlaura.com
+Expires: 2027-09-30T00:00:00Z
+Preferred-Languages: en
+Canonical: https://www.h3withlaura.com/.well-known/security.txt

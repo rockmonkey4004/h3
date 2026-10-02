@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Contact",
     description: "Get in touch with Laura for questions, collaborations, or just to say hello.",
+    alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
