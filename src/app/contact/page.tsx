@@ -1,4 +1,4 @@
-import { Send, Mail, MapPin, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, MessageSquare } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -59,42 +59,24 @@ export default function ContactPage() {
                 <div className="bg-white rounded-[2.5rem] border border-border/50 p-10 shadow-2xl shadow-foreground/5 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-accent-blue/5 rounded-bl-full animate-pulse" />
 
-                    <form className="space-y-8 relative z-10">
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold tracking-[0.2em] uppercase text-foreground/40 px-1">Your Name</label>
-                            <input
-                                type="text"
-                                placeholder="Full Name"
-                                className="w-full bg-secondary/10 border border-border focus:border-accent-blue focus:ring-4 focus:ring-accent-blue/10 rounded-2xl px-6 py-4 outline-none transition-all placeholder:text-foreground/20 font-light"
-                            />
+                    <div className="relative z-10 flex min-h-[28rem] flex-col items-center justify-center text-center space-y-6">
+                        <div className="w-16 h-16 rounded-2xl bg-accent-blue/10 flex items-center justify-center">
+                            <Mail className="w-8 h-8 text-accent-blue" />
                         </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold tracking-[0.2em] uppercase text-foreground/40 px-1">Email Address</label>
-                            <input
-                                type="email"
-                                placeholder="hello@example.com"
-                                className="w-full bg-secondary/10 border border-border focus:border-accent-blue focus:ring-4 focus:ring-accent-blue/10 rounded-2xl px-6 py-4 outline-none transition-all placeholder:text-foreground/20 font-light"
-                            />
+                        <div className="space-y-3">
+                            <h2 className="text-3xl font-bold font-serif">Send me an email</h2>
+                            <p className="text-foreground/60 font-light leading-relaxed max-w-sm">
+                                Email is the most reliable way to reach me for recipe questions, collaborations, or a quick hello.
+                            </p>
                         </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold tracking-[0.2em] uppercase text-foreground/40 px-1">Message</label>
-                            <textarea
-                                rows={5}
-                                placeholder="Tell me about your journey..."
-                                className="w-full bg-secondary/10 border border-border focus:border-accent-blue focus:ring-4 focus:ring-accent-blue/10 rounded-[2rem] px-6 py-4 outline-none transition-all placeholder:text-foreground/20 font-light resize-none"
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="w-full bg-foreground text-background font-bold tracking-[0.2em] uppercase py-5 rounded-[2rem] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3"
+                        <a
+                            href="mailto:laura@h3withlaura.com?subject=H3%20Website%20Message"
+                            className="inline-flex items-center gap-3 bg-foreground text-background font-bold tracking-[0.15em] uppercase px-8 py-4 rounded-2xl hover:opacity-90 transition-opacity"
                         >
-                            <Send className="w-5 h-5" />
-                            Send Message
-                        </button>
-                    </form>
+                            <Mail className="w-5 h-5" />
+                            Email Laura
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

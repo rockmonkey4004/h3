@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Facebook, Instagram, Mail } from 'lucide-react';
 
@@ -38,32 +36,7 @@ export default function Footer() {
                                 <Mail className="w-5 h-5" />
                             </Link>
                         </div>
-                        <div className="space-y-4 pt-4">
-                            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground/50">Newsletter</h4>
-                            <form
-                                action="https://feedburner.google.com/fb/a/mailverify"
-                                method="post"
-                                target="popupwindow"
-                                onSubmit={() => { window.open('https://feedburner.google.com/fb/a/mailverify?uri=h3withlaura', 'popupwindow', 'scrollbars=yes,width=550,height=520'); return true; }}
-                                className="flex flex-col gap-2"
-                            >
-                                <input type="hidden" value="h3withlaura" name="uri" />
-                                <input type="hidden" name="loc" value="en_US" />
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Enter your email"
-                                    className="px-4 py-2 bg-background border border-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-blue/20 transition-all font-light"
-                                    required
-                                />
-                                <button
-                                    type="submit"
-                                    className="bg-foreground text-background text-xs font-bold tracking-widest uppercase py-2.5 rounded-xl hover:opacity-90 transition-opacity"
-                                >
-                                    Subscribe
-                                </button>
-                            </form>
-                        </div>
+
                     </div>
                 </div>
                 <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">

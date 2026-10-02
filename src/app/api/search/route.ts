@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getAllPosts } from '@/lib/posts';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export async function GET() {
     const posts = getAllPosts();
     const searchData = posts.map(post => ({
@@ -10,5 +13,9 @@ export async function GET() {
         tags: post.tags
     }));
 
-    return NextResponse.json(searchData);
+    return NextResponse.json(searchData, {
+        headers: {
+            'Cache-Control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
+        },
+    });
 }
