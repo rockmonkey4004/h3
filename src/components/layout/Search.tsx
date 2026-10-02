@@ -153,7 +153,7 @@ export default function Search() {
                                 <button
                                     key={result.slug}
                                     onClick={() => {
-                                        router.push(`/blog/${result.slug}`);
+                                        router.push(`/blog/${encodeURIComponent(result.slug)}`);
                                         setIsOpen(false);
                                         setQuery('');
                                     }}

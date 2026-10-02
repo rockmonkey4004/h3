@@ -55,7 +55,7 @@ export default function BlogPage() {
                             key={post.slug}
                             className="group flex flex-col gap-5 p-5 rounded-3xl border border-border/50 bg-card transition-all hover:border-accent-blue/30 hover:shadow-2xl hover:shadow-accent-blue/5 outline-none"
                         >
-                            <Link href={`/blog/${post.slug}`} className="block aspect-[16/10] w-full overflow-hidden rounded-2xl bg-muted relative">
+                            <Link href={`/blog/${encodeURIComponent(post.slug)}`} className="block aspect-[16/10] w-full overflow-hidden rounded-2xl bg-muted relative">
                                 {post.image ? (
                                     <Image
                                         src={post.image}
@@ -78,7 +78,7 @@ export default function BlogPage() {
                                     </span>
                                     {post.tags.length > 0 && (
                                         <Link
-                                            href={`/tags/${post.tags[0].toLowerCase().replace(/\s+/g, '-')}`}
+                                            href={`/tags/${encodeURIComponent(post.tags[0].toLowerCase().replace(/\s+/g, '-'))}`}
                                             className="flex items-center gap-1.5 hover:text-accent-blue transition-colors bg-muted/50 px-2 py-0.5 rounded-full"
                                         >
                                             <TagIcon className="w-3 h-3" />
@@ -87,7 +87,7 @@ export default function BlogPage() {
                                     )}
                                 </div>
                                 <div className="space-y-3 flex-grow">
-                                    <Link href={`/blog/${post.slug}`}>
+                                    <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
                                         <h3 className="text-2xl font-bold font-serif leading-tight group-hover:text-accent-blue/80 transition-colors">
                                             {post.title}
                                         </h3>
@@ -97,7 +97,7 @@ export default function BlogPage() {
                                     </p>
                                 </div>
                                 <Link
-                                    href={`/blog/${post.slug}`}
+                                    href={`/blog/${encodeURIComponent(post.slug)}`}
                                     className="text-xs font-bold tracking-widest uppercase text-accent-blue-dark pt-2 hover:translate-x-1 transition-transform inline-flex items-center gap-2"
                                 >
                                     Read Post <span className="text-lg">→</span>

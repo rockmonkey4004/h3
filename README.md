@@ -54,13 +54,9 @@ npm run typecheck  # TypeScript checks
 - `/christmas`
 - `/recommended-items`
 
-## Legacy Directory
-
-`legacy/` contains historical Jekyll-era artifacts and migration references. It is excluded from modern linting/build flows.
-
 ## Verification and Deployment
 
-GitHub Actions is disabled. Run the former CI gate locally:
+Application CI workflows are disabled. GitHub CodeQL default setup runs separately for security analysis. Run the application verification gate locally:
 
 ```bash
 scripts/verify-local.sh

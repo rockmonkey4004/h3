@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title: post.title,
         description: post.description,
-        alternates: { canonical: `/blog/${post.slug}` },
+        alternates: { canonical: `/blog/${encodeURIComponent(post.slug)}` },
         openGraph: {
-            url: `/blog/${post.slug}`,
+            url: `/blog/${encodeURIComponent(post.slug)}`,
             title: post.title,
             description: post.description,
             type: 'article',
@@ -78,7 +78,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                                 {post.tags.map((tag) => (
                                     <Link
                                         key={tag}
-                                        href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                                        href={`/tags/${encodeURIComponent(tag.toLowerCase().replace(/\s+/g, '-'))}`}
                                         className="hover:text-accent-blue transition-colors underline decoration-border/30 underline-offset-4"
                                     >
                                         {tag}
