@@ -1,9 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import escapeHtml from 'escape-html';
 import matter from 'gray-matter';
 
 const POSTS_PATH = path.join(process.cwd(), 'src/content/posts');
 const POST_EXTENSIONS = ['.mdx', '.md'] as const;
+const SAFE_SLUG_PATTERN = /^[A-Za-z0-9._~-]+$/;
+
+function sanitizeSlug(slug: string): string | null {
+    const escapedSlug = escapeHtml(slug);
+
+    if (escapedSlug !== slug || !SAFE_SLUG_PATTERN.test(escapedSlug)) {
+        return null;
+    }
+
+    return escapedSlug;
+}
 
 export type Post = {
     slug: string;
@@ -74,26 +86,36 @@ export function getAllPosts(): Post[] {
     const posts = files
         .filter((file) => POST_EXTENSIONS.some((extension) => file.endsWith(extension)))
         .map((file) => {
+            const slug = sanitizeSlug(file.replace(/\.mdx?$/, ''));
+            if (!slug) {
+                return null;
+            }
+
             const filePath = path.join(POSTS_PATH, file);
             const fileContent = fs.readFileSync(filePath, 'utf8');
-            const slug = file.replace(/\.mdx?$/, '');
             return toPost(slug, fileContent);
         })
+        .filter((post): post is Post => post !== null)
         .sort((a, b) => getPostTimestamp(b.date) - getPostTimestamp(a.date));
 
     return posts;
 }
 
 export function getPostBySlug(slug: string): Post | null {
+    const safeSlug = sanitizeSlug(slug);
+    if (!safeSlug) {
+        return null;
+    }
+
     try {
         for (const extension of POST_EXTENSIONS) {
-            const filePath = path.join(POSTS_PATH, `${slug}${extension}`);
+            const filePath = path.join(POSTS_PATH, `${safeSlug}${extension}`);
             if (!fs.existsSync(filePath)) {
                 continue;
             }
 
             const fileContent = fs.readFileSync(filePath, 'utf8');
-            return toPost(slug, fileContent);
+            return toPost(safeSlug, fileContent);
         }
 
         return null;
