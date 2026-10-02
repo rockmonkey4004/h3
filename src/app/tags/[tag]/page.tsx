@@ -12,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     return {
         title: `${tagName} Recipes`,
         description: `Explore our collection of ${tagName} recipes and wellness tips on H3 with Laura.`,
+        alternates: { canonical: `/tags/${tag}` },
     };
 }
 

@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Blog",
     description: "Thoughts on health, healing, and hope. Discover wholesome recipes, personal stories, and practical wellness tips.",
+    alternates: { canonical: "/blog" },
 };
 
 

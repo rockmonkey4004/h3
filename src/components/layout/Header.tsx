@@ -103,7 +103,7 @@ export default function Header() {
                     <div className="pt-12 flex flex-col items-center gap-6 text-center">
                         <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-foreground/30 border-t border-border pt-8 w-32 mx-auto">Connect & Support</p>
                         <div className="flex gap-8">
-                            <a href="http://buymeacoffee.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-warm transition-colors text-foreground">Coffee</a>
+                            <a href="https://buymeacoffee.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-warm transition-colors text-foreground">Coffee</a>
                             <a href="https://www.instagram.com/h3withlaura" className="text-sm font-bold tracking-[0.1em] uppercase hover:text-accent-blue transition-colors text-foreground">Instagram</a>
                         </div>
                     </div>

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://h3withlaura.com/sitemap.xml',
+        sitemap: 'https://www.h3withlaura.com/sitemap.xml',
     };
 }

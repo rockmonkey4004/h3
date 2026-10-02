@@ -74,7 +74,7 @@ export default function ChristmasClient() {
                                 <p className="text-sm text-foreground/60 font-light px-4">If you find value in these recipes, consider donating a coffee.</p>
                             </div>
                             <a
-                                href="http://buymeacoffee.com/h3withlaura"
+                                href="https://buymeacoffee.com/h3withlaura"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-full bg-white border border-border py-4 rounded-xl font-bold tracking-widest uppercase hover:bg-muted transition-colors flex items-center justify-center gap-2"
