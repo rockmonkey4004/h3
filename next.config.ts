@@ -3,14 +3,15 @@ import type { NextConfig } from "next";
 const contentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://ajax.cloudflare.com https://static.cloudflareinsights.com",
+  "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https:",
+  "img-src 'self' data: blob: https://res.cloudinary.com https://images.unsplash.com",
   "font-src 'self' data:",
   "connect-src 'self' https://cloudflareinsights.com",
-  "frame-src https://www.youtube.com https://youtube.com",
+  "frame-src https://www.youtube.com https://youtube.com https://www.canva.com",
   "object-src 'none'",
   "base-uri 'self'",
-  "form-action 'self' https://feedburner.google.com",
+  "form-action 'self'",
   "frame-ancestors 'self'",
   "upgrade-insecure-requests",
 ].join("; ");

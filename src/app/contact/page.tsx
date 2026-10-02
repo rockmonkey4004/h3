@@ -1,5 +1,6 @@
-import { Send, Mail, MapPin, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, MessageSquare } from 'lucide-react';
 import type { Metadata } from 'next';
+import ContactForm from '@/components/features/ContactForm';
 
 export const metadata: Metadata = {
     title: "Contact",
@@ -59,42 +60,7 @@ export default function ContactPage() {
                 <div className="bg-white rounded-[2.5rem] border border-border/50 p-10 shadow-2xl shadow-foreground/5 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-accent-blue/5 rounded-bl-full animate-pulse" />
 
-                    <form className="space-y-8 relative z-10">
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold tracking-[0.2em] uppercase text-foreground/40 px-1">Your Name</label>
-                            <input
-                                type="text"
-                                placeholder="Full Name"
-                                className="w-full bg-secondary/10 border border-border focus:border-accent-blue focus:ring-4 focus:ring-accent-blue/10 rounded-2xl px-6 py-4 outline-none transition-all placeholder:text-foreground/20 font-light"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold tracking-[0.2em] uppercase text-foreground/40 px-1">Email Address</label>
-                            <input
-                                type="email"
-                                placeholder="hello@example.com"
-                                className="w-full bg-secondary/10 border border-border focus:border-accent-blue focus:ring-4 focus:ring-accent-blue/10 rounded-2xl px-6 py-4 outline-none transition-all placeholder:text-foreground/20 font-light"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold tracking-[0.2em] uppercase text-foreground/40 px-1">Message</label>
-                            <textarea
-                                rows={5}
-                                placeholder="Tell me about your journey..."
-                                className="w-full bg-secondary/10 border border-border focus:border-accent-blue focus:ring-4 focus:ring-accent-blue/10 rounded-[2rem] px-6 py-4 outline-none transition-all placeholder:text-foreground/20 font-light resize-none"
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="w-full bg-foreground text-background font-bold tracking-[0.2em] uppercase py-5 rounded-[2rem] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3"
-                        >
-                            <Send className="w-5 h-5" />
-                            Send Message
-                        </button>
-                    </form>
+                    <ContactForm />
                 </div>
             </div>
         </div>
