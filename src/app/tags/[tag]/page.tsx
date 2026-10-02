@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     return {
         title: `${tagName} Recipes`,
         description: `Explore our collection of ${tagName} recipes and wellness tips on H3 with Laura.`,
-        alternates: { canonical: `/tags/${tag}` },
+        alternates: { canonical: `/tags/${encodeURIComponent(tag)}` },
     };
 }
 
@@ -53,7 +53,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {posts.map((post) => (
-                        <Link key={post.slug} href={`/blog/${post.slug}`} className="group space-y-4 block">
+                        <Link key={post.slug} href={`/blog/${encodeURIComponent(post.slug)}`} className="group space-y-4 block">
                             <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-muted shadow-sm relative">
                                 <Image
                                     src={post.image || 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&auto=format&fit=crop&q=60'}

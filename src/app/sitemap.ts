@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.h3withlaura.com';
 
     const postUrls = posts.map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
+        url: `${baseUrl}/blog/${encodeURIComponent(post.slug)}`,
         lastModified: new Date(post.date),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
